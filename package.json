@@ -13,6 +13,12 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*": "pnpm run lint --fix"
+  },
   "dependencies": {
     "@iconify/react": "^6.0.0",
     "@tanstack/react-query": "^5.81.5",
@@ -32,7 +38,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
+    "lint-staged": "^16.1.2",
     "prettier-plugin-tailwindcss": "^0.6.13",
+    "simple-git-hooks": "^2.13.0",
     "tailwindcss": "^4.1.11",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
@@ -41,6 +49,7 @@
   "trustedDependencies": [
     "@swc/core",
     "@tailwindcss/oxide",
-    "esbuild"
+    "esbuild",
+    "simple-git-hooks"
   ]
 }
