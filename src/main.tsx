@@ -1,9 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
+import invariant from "tiny-invariant"
 
-createRoot(document.getElementById('root')!).render(
+import { App } from "./app.tsx"
+
+const rootElement = document.querySelector("#root")
+invariant(rootElement, "Root element not found")
+
+createRoot(rootElement).render(
   <StrictMode>
     <App />
   </StrictMode>,
