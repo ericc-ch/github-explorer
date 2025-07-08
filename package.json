@@ -14,10 +14,10 @@
     "preview": "vite preview"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged"
+    "pre-commit": "bunx lint-staged"
   },
   "lint-staged": {
-    "*": "pnpm run lint --fix"
+    "*": "bun run lint --fix"
   },
   "dependencies": {
     "@iconify/react": "^6.0.0",
