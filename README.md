@@ -1,69 +1,49 @@
-# React + TypeScript + Vite
+# GitHub Repositories Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple yet robust web application built with React and TypeScript that allows you to search for GitHub users and explore their public repositories. This project was developed as a technical assessment to showcase modern frontend development practices.
 
-Currently, two official plugins are available:
+## Project Rationale & Architectural Decisions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project, while seemingly simple, was approached with a mindset geared towards scalability and maintainability, similar to a real-world application.
 
-## Expanding the ESLint configuration
+### Why I Over-engineered
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To sort of simulate a real-world scenario, applications need to be robust, scalable, and easy to maintain. Using a libraries, for example TanStack Query can simplifies data fetching. Tailwind can simplifies styling.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This prepares for future growth and complexity.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Why limiting repo list to 10 per call
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The GitHub API has rate limits for unauthenticated requests. A naive implementation might fetch all repositories for a user at once, which could easily lead to `429 Too Many Requests` errors, especially for users with many repositories.
+
+## Getting Started
+
+### Prerequisites
+
+- [Bun](https://bun.sh/)
+
+### Installation
+
+Install dependencies:
+
+```sh
+bun install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the Application
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To start the development server, run:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+bun run dev
 ```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+- `bun run dev`: Runs the app in development mode.
+- `bun run build`: Builds the app for production to the `dist` folder.
+- `bun run lint`: Lints the codebase using ESLint.
+- `bun run preview`: Serves the production build locally.
+- `bun run test`: Runs the test suite.
