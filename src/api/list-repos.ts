@@ -18,11 +18,12 @@ export const listReposQuery = (options: ListReposQueryOptions) => {
         username: options.username,
         per_page: ITEM_PER_PAGE,
         page: pageParam,
+        sort: "pushed",
       }),
     staleTime: minutesToMs(5),
     initialPageParam: 1,
-    getNextPageParam: (lastPage) =>
-      lastPage.length < ITEM_PER_PAGE ? undefined : lastPage.length + 1,
+    getNextPageParam: (lastPage, _allPages, lastPageParam) =>
+      lastPage.length < ITEM_PER_PAGE ? undefined : lastPageParam + 1,
   })
 }
 
@@ -32,6 +33,7 @@ interface ListReposOptions {
   username: string
   per_page?: number
   page?: number
+  sort?: "created" | "updated" | "pushed" | "full_name"
 }
 
 const listRepos = ({ username, ...options }: ListReposOptions) => {
