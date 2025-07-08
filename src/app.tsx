@@ -19,26 +19,40 @@ export function App() {
     setSearchQuery(formData.get("username") as string)
   }
 
+  const isSuccess = users.isSuccess && !users.isFetching
+
   return (
-    <div className="mx-auto w-[min(calc(100%-2rem)_,400px)] bg-yellow-50">
+    <div className="mx-auto w-[min(calc(100%-2rem)_,400px)] bg-yellow-500">
       <form className="flex flex-col gap-4 py-8" onSubmit={onSubmit}>
         <input
           required
-          className="w-full border border-gray-300 bg-white px-4 py-2 text-gray-900 placeholder-gray-400 transition duration-150 ease-in-out focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-gray-300 bg-gray-100 px-4 py-2 text-gray-900 placeholder-gray-400 transition duration-150 ease-in-out focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           name="username"
           placeholder="Enter username"
           type="text"
         />
         <button
-          className="transform bg-blue-500 px-4 py-2 font-bold text-white duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:translate-y-0.5"
+          className="transform bg-blue-500 px-4 py-2 font-bold text-white duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 active:translate-y-0.5"
           type="submit"
         >
           Search
         </button>
       </form>
 
-      {users.isLoading && <p>Loading...</p>}
-      <div></div>
+      {users.isFetching && <p>Loading...</p>}
+      {isSuccess && (
+        <>
+          <p>Showing users for "{searchQuery}"</p>
+
+          {users.data.items.map((user) => (
+            <div key={user.id}>
+              <p>{user.login}</p>
+            </div>
+          ))}
+        </>
+      )}
+
+      {}
 
       <pre>{JSON.stringify(users.data, null, 2)}</pre>
     </div>

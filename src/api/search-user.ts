@@ -36,7 +36,7 @@ interface SearchUserResponse {
   items: Array<SearchUserItem>
 }
 
-interface SearchUserItem {
+export interface SearchUserItem {
   login: string
   id: number
   node_id: string
