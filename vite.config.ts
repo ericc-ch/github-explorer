@@ -1,3 +1,5 @@
+/// <reference types="vitest/config" />
+
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react-swc"
 import { defineConfig } from "vite"
@@ -9,4 +11,12 @@ const base = repo ? `/${repo.split("/")[1]}/` : "/"
 export default defineConfig({
   plugins: [react(), tailwindcss(), tsconfigPaths()],
   base,
+  test: {
+    browser: {
+      enabled: true,
+      provider: "playwright",
+      // https://vitest.dev/guide/browser/playwright
+      instances: [{ browser: "chromium" }],
+    },
+  },
 })
