@@ -18,7 +18,9 @@ export function App() {
     event.preventDefault()
 
     const formData = new FormData(event.currentTarget)
-    setSearchQuery(formData.get("username") as string)
+    const username = formData.get("username") as string
+    if (username === searchQuery) return
+    setSearchQuery(username)
   }
 
   const isSuccess = users.isSuccess && !users.isFetching
@@ -27,17 +29,28 @@ export function App() {
     <div className="mx-auto flex w-[min(calc(100%-2rem)_,64ch)] flex-col gap-6 pt-8">
       <SearchForm disabled={users.isFetching} onSubmit={onSubmit} />
 
-      {users.isFetching && <p>Loading...</p>}
+      {users.isFetching && (
+        <p className="text-center text-gray-500">Loading...</p>
+      )}
+
+      {users.isError && (
+        <p className="text-center text-red-600">
+          An error occurred: {users.error.message}
+        </p>
+      )}
 
       {isSuccess && (
         <div className="flex flex-col gap-4">
           <p>Showing users for "{searchQuery}"</p>
 
-          <div className="flex flex-col gap-2">
-            {users.data.items.map((user) => (
-              <GitHubUser key={user.id} user={user} />
-            ))}
-          </div>
+          {users.data.items.length === 0 ?
+            <p className="text-center text-gray-500">No users found.</p>
+          : <div className="flex flex-col gap-2">
+              {users.data.items.map((user) => (
+                <GitHubUser key={user.id} user={user} />
+              ))}
+            </div>
+          }
         </div>
       )}
     </div>

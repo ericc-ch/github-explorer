@@ -29,6 +29,14 @@ export function ReposList({ username }: ReposListProps) {
     )
   }
 
+  if (repos.data.pages[0].length === 0) {
+    return (
+      <p className="p-4 text-center text-gray-500">
+        This user has no public repositories.
+      </p>
+    )
+  }
+
   return (
     <div className="flex flex-col gap-3 border-t border-gray-200 p-4">
       {repos.data.pages.map((page) =>
