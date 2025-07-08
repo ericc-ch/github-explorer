@@ -28,7 +28,7 @@
   - [x] Handle form submission via the "Enter" key.
 - [x] **Loading & Error States**
   - [x] Conditionally render a loading spinner while the user search is in progress.
-  - [ ] Display a user-friendly message if the user search API call fails.
+  - [x] Display a user-friendly message if the user search API call fails.
   - [x] Conditionally render a loading indicator when fetching repositories.
   - [x] Display an error message if fetching repositories fails.
 - [x] **User Search Results**
@@ -49,11 +49,11 @@
 
 - [ ] **README File**
   - [ ] Write a proper `README.md` file describing the project, how to set it up, and how to run it.
-- [ ] **Styling & Responsiveness (Nice to have)**
-  - [ ] Refine Tailwind CSS styles to closely match the provided designs.
-  - [ ] Ensure the application has a responsive mobile view.
+- [x] **Styling & Responsiveness (Nice to have)**
+  - [x] Refine Tailwind CSS styles to closely match the provided designs.
+  - [x] Ensure the application has a responsive mobile view.
 - [ ] **Testing (Nice to have)**
   - [ ] Write unit or integration tests for key components and functions.
-- [ ] **Deployment**
-  - [ ] Host the application on a publicly accessible URL, like GitHub Pages.
-  - [ ] Ensure the final code is in a public GitHub repository.
+- [x] **Deployment**
+  - [x] Host the application on a publicly accessible URL, like GitHub Pages.
+  - [x] Ensure the final code is in a public GitHub repository.
