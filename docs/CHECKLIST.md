@@ -21,27 +21,27 @@
 
 ### UI Development & State Management
 
-- [ ] **Form & Search Input**
-  - [ ] Manage the state of the username input field.
-  - [ ] Create an `onSubmit` event handler for the form.
-  - [ ] On form submission, trigger the `searchUserQuery`.
-  - [ ] Handle form submission via the "Enter" key.
-- [ ] **Loading & Error States**
-  - [ ] Conditionally render a loading spinner while the user search is in progress.
+- [x] **Form & Search Input**
+  - [x] Manage the state of the username input field.
+  - [x] Create an `onSubmit` event handler for the form.
+  - [x] On form submission, trigger the `searchUserQuery`.
+  - [x] Handle form submission via the "Enter" key.
+- [x] **Loading & Error States**
+  - [x] Conditionally render a loading spinner while the user search is in progress.
   - [ ] Display a user-friendly message if the user search API call fails.
-  - [ ] Conditionally render a loading indicator when fetching repositories.
-  - [ ] Display an error message if fetching repositories fails.
-- [ ] **User Search Results**
-  - [ ] Once user data is fetched, render the "Showing users for '...'" text.
-  - [ ] Map over the API results to display a list of clickable user items.
-  - [ ] Style the user list to match the accordion-style design in **Frame 4**.
-- [ ] **Repository List**
-  - [ ] Manage state to track the currently selected/expanded user.
-  - [ ] On user click, trigger the `listReposQuery` for that user.
-  - [ ] Conditionally render the repository list for the selected user, matching the design in **Frame 2**.
-  - [ ] For each repository, display its **name**, **description**, and **star count**.
-  - [ ] Implement a "Load More" button or infinite scroll to fetch subsequent pages of repositories using `getNextPageParam` from `useInfiniteQuery`.
-  - [ ] Ensure the chevron icon changes direction based on the expanded/collapsed state.
+  - [x] Conditionally render a loading indicator when fetching repositories.
+  - [x] Display an error message if fetching repositories fails.
+- [x] **User Search Results**
+  - [x] Once user data is fetched, render the "Showing users for '...'" text.
+  - [x] Map over the API results to display a list of clickable user items.
+  - [x] Style the user list to match the accordion-style design in **Frame 4**.
+- [x] **Repository List**
+  - [x] Manage state to track the currently selected/expanded user.
+  - [x] On user click, trigger the `listReposQuery` for that user.
+  - [x] Conditionally render the repository list for the selected user, matching the design in **Frame 2**.
+  - [x] For each repository, display its **name**, **description**, and **star count**.
+  - [x] Implement a "Load More" button or infinite scroll to fetch subsequent pages of repositories using `getNextPageParam` from `useInfiniteQuery`.
+  - [x] Ensure the chevron icon changes direction based on the expanded/collapsed state.
 
 ---
 
